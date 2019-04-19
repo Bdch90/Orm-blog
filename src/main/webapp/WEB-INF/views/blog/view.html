@@ -6,11 +6,21 @@
     <title>Title</title>
 </head>
 <body>
-<p><a href="home">Back to home</a></p>
-<p>
-    <th:block th:if="success">
-<p th:text="success"></p>
-</th:block>
-</p>
+<h1>Detail</h1>
+<p><a href="/home">Back to home</a></p>
+<table>
+    <tr>
+        <td>ID</td>
+        <td th:text="${blog.id}"></td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td th:text="${blog.name}"></td>
+    </tr>
+    <tr>
+        <td>Content:</td>
+        <td th:text="${blog.content}"></td>
+    </tr>
+</table>
 </body>
 </html>

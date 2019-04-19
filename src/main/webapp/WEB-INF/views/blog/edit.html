@@ -5,11 +5,23 @@
     <title>Update blog</title>
 </head>
 <body>
-<p><a href="home">Back to home</a></p>
-<p>
-    <th:block th:if="success">
-        <p th:text="success"></p>
-    </th:block>
-</p>
+<p><a href="/home">Back to home</a></p>
+<form th:action="@{/edit-blog}" th:object="${blog}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Content</td>
+            <td><input type="text" th:field="*{content}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Edit"></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

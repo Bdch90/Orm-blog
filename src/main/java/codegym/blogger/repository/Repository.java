@@ -6,9 +6,9 @@ public interface Repository <T>
 {
     List<T> findAll();
 
-    T findById(Long id);
+    T findById(long id);
 
     void save (T model);
 
-    void remove(Long id);
+    void remove(long id);
 }

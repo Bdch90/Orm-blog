@@ -17,7 +17,7 @@ import java.util.List;
 public class BloggerController
 {
     @Autowired
-    BlogerService blogerService = new BlogerServiceIplm();
+    BlogerService blogerService;
 
     @GetMapping("/home")
     public ModelAndView showBlogList()
@@ -38,13 +38,13 @@ public class BloggerController
     }
 
     @PostMapping("/create-blog")
-    public ModelAndView createBlog(@ModelAttribute("blog") Blogger blogger)
+    public String createBlog(@ModelAttribute("blog") Blogger blogger)
     {
         blogerService.save(blogger);
         ModelAndView modelAndView = new ModelAndView("/blog/create");
         modelAndView.addObject("blog", blogger);
         modelAndView.addObject("message","Add successfully");
-        return modelAndView;
+        return "redirect:home";
     }
 
     @GetMapping("/edit-blog/{id}")
@@ -65,14 +65,14 @@ public class BloggerController
     }
 
     @PostMapping("/edit-blog")
-    public ModelAndView updateBlog(@ModelAttribute("blog") Blogger blogger)
-    {
+    public String update(@ModelAttribute("blog")Blogger blogger)
+        {
         blogerService.save(blogger);
 
-        ModelAndView modelAndView = new ModelAndView("/blog/edit");
-        modelAndView.addObject("blog",blogger);
-        modelAndView.addObject("message","Update successfull");
-        return modelAndView;
+//        ModelAndView modelAndView = new ModelAndView("/blog/edit");
+//        modelAndView.addObject("blog",blogger);
+//        modelAndView.addObject("message","Update successfull");
+        return "redirect:home";
     }
 
     @GetMapping("/view-blog/{id}")

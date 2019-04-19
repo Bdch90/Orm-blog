@@ -23,7 +23,7 @@ public class BloggerRepositoryImpl implements BloggerRepository
     }
 
     @Override
-    public Blogger findById(Long id)
+    public Blogger findById(long id)
     {
         TypedQuery<Blogger> query = em.createQuery("select c from Blogger c where c.id=:id", Blogger.class);
         query.setParameter("id",id);
@@ -44,7 +44,7 @@ public class BloggerRepositoryImpl implements BloggerRepository
     }
 
     @Override
-    public void remove(Long id)
+    public void remove(long id)
     {
         Blogger blogger = findById(id);
         if (blogger != null)
